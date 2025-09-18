@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📅 Organization Scheduler API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9fafb;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: #2563eb;
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      margin-top: 0.5rem;
+      font-size: 1.2rem;
+    }
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    section h2 {
+      margin-top: 0;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+    code {
+      background: #f4f4f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      background: #f3f4f6;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📅 Organization Scheduler API</h1>
+    <p>Manage organizations, users, schedules, and queries with role-based access control.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>✨ Features</h2>
+      <ul>
+        <li>🔐 Authentication & Authorization with JWT</li>
+        <li>🏢 Organization Management</li>
+        <li>👥 User Roles (Admin 👑, Manager 🧑‍💼, Member 🙋)</li>
+        <li>📅 Schedule Management (create, assign, update, delete)</li>
+        <li>❓ Query Management (raise, respond, resolve)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🔗 API Endpoints</h2>
+
+      <h3>🔐 Authentication</h3>
+      <ul>
+        <li><code>POST /api/auth/login</code> – Login a user</li>
+        <li><code>POST /api/auth/logout</code> – Logout current user</li>
+      </ul>
+
+      <h3>🏢 Organizations</h3>
+      <ul>
+        <li><code>POST /api/orgs/register</code> – Register a new organization (with Admin)</li>
+        <li><code>DELETE /api/orgs/:orgId</code> – Delete an organization (Admin only)</li>
+      </ul>
+
+      <h3>👥 Users</h3>
+      <ul>
+        <li><code>GET /api/users/me</code> – Get current user profile</li>
+        <li><code>PUT /api/users/me</code> – Update profile</li>
+        <li><code>PUT /api/users/me/password</code> – Change password</li>
+        <li><code>POST /api/users/add</code> – Admin creates Manager/Member</li>
+        <li><code>GET /api/users/all-users</code> – Admin lists all users</li>
+        <li><code>PUT /api/users/:id</code> – Admin updates user</li>
+        <li><code>DELETE /api/users/:id</code> – Admin deletes user</li>
+        <li><code>GET /api/users/members</code> – Manager lists their members</li>
+        <li><code>POST /api/users/members</code> – Manager creates Member</li>
+      </ul>
+
+      <h3>📅 Schedules</h3>
+      <ul>
+        <li><code>POST /api/users/schedules</code> – Create schedule (Admin/Manager)</li>
+        <li><code>GET /api/users/schedules/managed</code> – View schedules managed by user</li>
+        <li><code>GET /api/users/schedules/my</code> – View schedules assigned to me</li>
+        <li><code>GET /api/users/schedules/:scheduleId</code> – View specific schedule</li>
+        <li><code>PUT /api/users/schedules/:scheduleId</code> – Update schedule (Admin/Manager)</li>
+        <li><code>PATCH /api/users/schedules/:scheduleId/status</code> – Update schedule status (Member)</li>
+        <li><code>DELETE /api/users/schedules/:scheduleId</code> – Delete schedule</li>
+      </ul>
+
+      <h3>❓ Queries</h3>
+      <ul>
+        <li><code>POST /api/users/schedules/:scheduleId/queries</code> – Raise a query</li>
+        <li><code>GET /api/users/schedules/:scheduleId/queries</code> – View all queries</li>
+        <li><code>POST /api/users/schedules/:scheduleId/queries/:queryId/responses</code> – Add a response</li>
+        <li><code>GET /api/users/schedules/:scheduleId/queries/:queryId/responses</code> – View responses</li>
+        <li><code>PATCH /api/users/schedules/:scheduleId/queries/:queryId/resolve</code> – Resolve query</li>
+        <li><code>DELETE /api/users/schedules/:scheduleId/queries/:queryId</code> – Delete query</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>🚀 Deployed with Render | 📖 API Docs available in README</p>
+  </footer>
+</body>
+</html>

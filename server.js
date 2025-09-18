@@ -32,7 +32,7 @@ app.use(express.json()); // Parses incoming JSON requests
 app.use(express.urlencoded({ extended: true })); // Parses URL-encoded data
 app.use(cookieParser()); // Parses cookies attached to the request
 app.use(morgan('dev')); // HTTP request logger (e.g., outputs 'GET /api/users 200 5ms - 100b')
-
+app.use(express.static('public'));
 // --- API Routes ---
 const API_PREFIX = '/api'; // Define a common API prefix for cleaner routes
 
