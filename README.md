@@ -1,8 +1,8 @@
-# Task Management API
+# Organization Scheduler API
 
-## Project Overview
+## 🏢 Project Overview
 
-This project is a robust Task Management API built with Node.js, Express, and MongoDB. It provides a RESTful interface for managing organizations, users (Admins, Managers, and Members), tasks, and queries related to tasks. The API is designed with role-based access control (RBAC) to ensure that users can only perform actions relevant to their assigned roles and permissions.
+This project is a robust Organization Scheduler API built with Node.js, Express, and MongoDB. It provides a RESTful interface for managing organizations, users (Admins, Managers, and Members), schedules, and queries related to schedules/tasks. The API is designed with role-based access control (RBAC) to ensure that users can only perform actions relevant to their assigned roles and permissions.
 
 ## Features
 
@@ -21,7 +21,7 @@ This project is a robust Task Management API built with Node.js, Express, and Mo
     *   Add, retrieve, edit, and delete responses to queries.
     *   Mark queries as resolved.
 
-## Technologies Used
+## 🛠️ Technologies Used
 
 *   **Node.js**: JavaScript runtime.
 *   **Express.js**: Web application framework for Node.js.
@@ -33,9 +33,9 @@ This project is a robust Task Management API built with Node.js, Express, and Mo
 *   **Cookie-parser**: Middleware for parsing HTTP cookies.
 *   **CORS**: Middleware for enabling Cross-Origin Resource Sharing.
 *   **Morgan**: HTTP request logger middleware.
-*   **Joi (or similar)**: For input validation (implied by `inputValidators` and `queryValidator`).
+*   **express-validator**: For input validation (implied by `inputValidators` and `queryValidator`).
 
-## Project Structure
+## 📂 Project Structure
 
 ```
 .                
@@ -125,7 +125,7 @@ This project is a robust Task Management API built with Node.js, Express, and Mo
 
 All API endpoints are prefixed with `/api`.
 
-### 1. Authentication Routes (`/api/auth`)
+### 1. 🔐 Authentication Routes (`/api/auth`)
 
 | Method | Endpoint    | Description                     | Access   | Controller          |
 | :----- | :---------- | :------------------------------ | :------- | :------------------ |
@@ -134,14 +134,14 @@ All API endpoints are prefixed with `/api`.
 | `POST` | `/forgot-password` (Optional) | Initiates password reset process | Public   | `authController.forgotPassword` |
 | `POST` | `/reset-password` (Optional) | Resets user password            | Public   | `authController.resetPassword` |
 
-### 2. Organization Routes (`/api/orgs`)
+### 2. 🏢 Organization Routes (`/api/orgs`)
 
 | Method | Endpoint    | Description                     | Access        | Controller          |
 | :----- | :---------- | :------------------------------ | :------------ | :------------------ |
 | `POST` | `/register` | Registers a new organization and its Admin | Public        | `organizationController.register` |
 | `DELETE` | `/:orgId`   | Deletes an organization         | Admin (of that org) | `organizationController.deleteOrg` |
 
-### 3. User Routes (`/api/users`)
+### 3.👥 User Routes (`/api/users`)
 
 This router includes nested routes for tasks (`/api/users/tasks`).
 
@@ -171,7 +171,7 @@ This router includes nested routes for tasks (`/api/users/tasks`).
 | `DELETE` | `/:userId`       | Delete any user                     | Admin    | `adminControllers.deleteAnyUser` |
 | `POST` | `/add`           | Create any user (Member/Manager)    | Admin    | `adminControllers.createUser` |
 
-### 4. Task Routes (`/api/users/tasks`)
+### 4. 📅 Task Routes (`/api/users/tasks`)
 
 These routes are nested under the `/api/users` path.
 
@@ -185,7 +185,7 @@ These routes are nested under the `/api/users` path.
 | `PATCH`| `/:taskId/status`    | Update only task status             | Any assigned user | `taskController.updateTaskStatus` |
 | `DELETE` | `/:taskId`           | Delete a task                       | Creator/Admin | `taskController.deleteTask` |
 
-### 5. Query Routes (`/api/users/tasks/:taskId/queries`)
+### 5. ❓ Query Routes (`/api/users/tasks/:taskId/queries`)
 
 These routes are nested under the `/api/users/tasks/:taskId` path.
 
